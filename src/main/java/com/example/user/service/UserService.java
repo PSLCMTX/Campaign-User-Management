@@ -2,10 +2,12 @@ package com.example.user.service;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.user.entity.User;
+import com.example.user.exception_handler.UserNotFoundException;
 import com.example.user.repository.UserRepository;
 
 @Service
@@ -23,19 +25,23 @@ public class UserService {
 	 * @return
 	 */
 	public User saveUser(User user) {
-		user.setId(service.getSequenceNumber("user_sequence"));
-		User u = repo.save(user);
-		return u;
+		//user.setId(service.getSequenceNumber("user_sequence"));
+		return repo.save(user);
 	}
 
 	/**
 	 * method is used to get user from the database based on ID.
 	 * @param id
 	 * @return
+	 * @throws UserNotFoundException 
 	 */
 	
-	public User getUserById(int id) {
-		return repo.findById(id).get();
+	public Optional<User> getUserById(int id) throws UserNotFoundException {
+		Optional<User> user = repo.findById(id);
+		if(!user.isPresent())
+			throw new UserNotFoundException("User not found");
+		
+		return user;
 	}
 	
 	/**
@@ -64,7 +70,7 @@ public class UserService {
 	 * @return
 	 */
 	
-	public Optional<Object> updateUser(int id, User user) {
+	public Optional<User> updateUser(int id, User user) {
 		Optional<User> old = repo.findById(id);
 		if (old.isPresent()) {
 			old.get().setId(user.getId());
@@ -74,7 +80,7 @@ public class UserService {
 			old.get().setPhone(user.getPhone());
 			old.get().setState(user.getState());
 			repo.save(old.get());
-			return Optional.of(old);
+			return old;
 		}
 		return Optional.empty();
 	}

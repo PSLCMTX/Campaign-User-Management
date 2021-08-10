@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.user.entity.User;
+import com.example.user.exception_handler.UserNotFoundException;
 import com.example.user.service.UserService;
 
 /**
@@ -36,9 +37,10 @@ public class UserController {
 	 * Controller method used to get user based on Id.
 	 * @param id
 	 * @return User.
+	 * @throws UserNotFoundException 
 	 */
 	@GetMapping("/user/{id}")
-	public User getUser(@PathVariable int id) {
+	public Optional<User> getUser(@PathVariable int id) throws UserNotFoundException {
 		return service.getUserById(id);
 	}
 	
@@ -50,7 +52,7 @@ public class UserController {
 	 */
 
 	@PutMapping("/user/{id}")
-	public Optional<Object> updateUser(@PathVariable int id, @RequestBody User user) {
+	public Optional<User> updateUser(@PathVariable int id, @RequestBody User user) {
 		return service.updateUser(id, user);
 	}
 	

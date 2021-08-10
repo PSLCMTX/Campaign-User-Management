@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -18,6 +19,15 @@ public class UserExceptionHandler extends ResponseEntityExceptionHandler {
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		ExceptionResponse exception = new ExceptionResponse(
 				ex.getBindingResult().getAllErrors().get(0).getDefaultMessage(), request.getDescription(false));
+
+		return new ResponseEntity<Object>(exception, HttpStatus.BAD_REQUEST);
+
+	}
+	
+	@ExceptionHandler(UserNotFoundException.class)
+	protected ResponseEntity<Object> userNotFoundException(UserNotFoundException ex,
+			 WebRequest request) {
+		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), request.getDescription(false));
 
 		return new ResponseEntity<Object>(exception, HttpStatus.BAD_REQUEST);
 

@@ -1,7 +1,6 @@
 package com.example.user.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
@@ -13,7 +12,7 @@ import javax.validation.constraints.Size;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
-@Entity
+
 public class User {
 
 	@Transient
