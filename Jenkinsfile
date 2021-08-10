@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    
-    environment{
-     PATH = "/home/ec2-user/opt/apache-maven-3.8.1/bin/:$PATH" 
-    }
-  
+
+   tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven3"
+    } 
   stages{
      
        stage('Checkout & Build') {
