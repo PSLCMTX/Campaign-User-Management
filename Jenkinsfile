@@ -15,6 +15,7 @@ pipeline {
            steps {
               git 'https://github.com/PSLCMTX/Campaign-User-Management'
                 sh "mvn clean install package"  
+                sh "echo $IMAGE_URL_WITH_TAG"
            }
        }
       
