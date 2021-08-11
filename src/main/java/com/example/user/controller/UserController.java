@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.user.entity.User;
-import com.example.user.exception_handler.UserNotFoundException;
+import com.example.user.exceptionhandler.UserNotFoundException;
 import com.example.user.service.UserService;
 
 /**

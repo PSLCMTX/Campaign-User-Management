@@ -17,7 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.example.user.entity.State;
 import com.example.user.entity.User;
-import com.example.user.exception_handler.UserNotFoundException;
+import com.example.user.exceptionhandler.UserNotFoundException;
 import com.example.user.repository.UserRepository;
 
 @SpringBootTest

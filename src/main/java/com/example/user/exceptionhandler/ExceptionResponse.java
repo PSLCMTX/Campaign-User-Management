@@ -1,4 +1,4 @@
-package com.example.user.exception_handler;
+package com.example.user.exceptionhandler;
 
 public class ExceptionResponse {
 	private String errorMessage;

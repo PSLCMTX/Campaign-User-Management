@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.user.entity.User;
-import com.example.user.exception_handler.UserNotFoundException;
+import com.example.user.exceptionhandler.UserNotFoundException;
 import com.example.user.repository.UserRepository;
 
 @Service
