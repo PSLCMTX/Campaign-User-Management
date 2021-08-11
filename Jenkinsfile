@@ -29,6 +29,7 @@ pipeline {
       steps{
                 sh "chmod +x versionChange.sh"
                 sh "./versionChange.sh ${DOCKER_TAG}"
+                sh "cat docker-compose.yaml"
            }
   } 
 }
