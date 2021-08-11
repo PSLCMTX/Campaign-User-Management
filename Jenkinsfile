@@ -41,7 +41,7 @@ pipeline {
                        
                           sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/master/"
                                    
-                          sh "ssh ec2-user@65.0.130.141 cat docker-compose.yaml"
+                          sh "ssh ec2-user@65.0.130.141 cd master && cat docker-compose.yaml"
                           
                             }
           
