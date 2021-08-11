@@ -36,10 +36,9 @@ pipeline {
                 sh "chmod +x versionChange.sh"
                 sh "./versionChange.sh ${DOCKER_TAG}"
                 sh "cat docker-compose.yaml"
-            
-                    
-          
-             ansiblePlaybook credentialsId: 'docker-machine', installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yaml'
+       
+                 
+            ansiblePlaybook becomeUser: 'ec2-user', credentialsId: 'docker-machine', installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yaml', sudoUser: 'ec2-user'
           
            }
       }
