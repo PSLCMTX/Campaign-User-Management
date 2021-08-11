@@ -22,7 +22,12 @@ pipeline {
       stage('Build & Push Docker Image'){
             steps{
                 sh "docker build . -t ${IMAGE_URL_WITH_TAG}"
-                sh "docker push ${IMAGE_URL_WITH_TAG}"
+                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhubpass')]) {
+                                 sh "docker login -u bec0413 -p  ${dockerhubpass}"
+                                 sh "docker push ${IMAGE_URL_WITH_TAG}"
+                        }
+                
+               
             }
         }
       stage('Deployment on Dockerhost'){
