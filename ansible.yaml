@@ -1,0 +1,8 @@
+- hosts: test
+  tasks:
+    - name:  copy docker-compose.yaml to docker volumes
+      copy:
+          src: docker-compose.yaml
+          dest: /home/ec2-user/master/
+    - name: print docker-compose.yaml 
+      command: cat docker-compose.yaml
