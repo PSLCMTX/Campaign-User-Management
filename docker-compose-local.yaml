@@ -1,0 +1,27 @@
+version: "3"
+services:
+  usermanagement:
+          build: .
+          image: user-manager:tagVersion
+          ports:
+            - "8085:8085"
+          container_name: usermng-api
+          links:
+            - usermongo_db
+          depends_on:
+            - usermongo_db
+          networks:
+            - shared-net
+            
+  usermongo_db:
+          image: 'mongo:4.4.6'
+          ports:
+            - "27017:27017"
+          container_name: usermongo_db
+          volumes:
+            - /home/sinoed/data/db:/data/db
+          networks:
+             - shared-net
+networks:
+   shared-net:
+      driver: bridge   
