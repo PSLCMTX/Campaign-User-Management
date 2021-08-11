@@ -4,6 +4,7 @@
       copy:
           src: docker-compose.yaml
           dest: /home/ec2-user/master/
+      command: ls
     - name: print docker-compose.yaml 
       command: pwd
     - name: print docker-compose.yaml 
