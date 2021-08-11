@@ -43,9 +43,9 @@ pipeline {
                                    
                           sh "ssh ec2-user@65.0.130.141 cd master && cat docker-compose.yaml"
                     
-                          sh "ssh ec2-user@65.0.130.141 cd master &&  whoami "
+                          sh "ssh ec2-user@65.0.130.141 cd master &&  whoami  "
                           
-                          sh "ssh ec2-user@65.0.130.141 cd master && docker-compose up --detach" 
+                          sh "ssh ec2-user@65.0.130.141 cd master && ls -la" 
                           }  
              
           
