@@ -37,13 +37,9 @@ pipeline {
                 sh "./versionChange.sh ${DOCKER_TAG}"
                 sh "cat docker-compose.yaml"
             
-                      sshagent(['docker-machine']) {
-                       
-                          sh "scp -o StrictHostKeyChecking=no docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/master/"
-                                   
-                          sh "ssh ec2-user@65.0.130.141 cd master && cat docker-compose.yaml"
-                          
-                            }
+                    
+          
+             ansiblePlaybook credentialsId: 'docker-machine', installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yaml'
           
            }
       }
