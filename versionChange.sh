@@ -1,1 +1,1 @@
-sed -i "s/tagVersion/$1/g" docker-compose.yaml.yml
+sed -i "s/tagVersion/$1/g" docker-compose.yaml
