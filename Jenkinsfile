@@ -31,6 +31,7 @@ pipeline {
                 sh "./versionChange.sh ${DOCKER_TAG}"
                 sh "cat docker-compose.yaml"
            }
+      }
   } 
 }
 def getDockerTag(){
