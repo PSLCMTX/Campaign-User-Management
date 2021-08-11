@@ -39,13 +39,13 @@ pipeline {
        
                 sshagent(['docker-machine']) {
                        
-                          sh "scp -o StrictHostKeyChecking=no test.txt ec2-user@172.31.32.170:/home/ec2-user/master/"
+                          sh 'scp -o StrictHostKeyChecking=no test.txt ec2-user@65.0.130.141:/home/ec2-user'
                                    
-                          sh "ssh ec2-user@172.31.32.170 cd master && cat docker-compose.yaml"
+                          sh 'ssh ec2-user@65.0.130.141 cd master && cat docker-compose.yaml'
                     
-                          sh "ssh ec2-user@172.31.32.170 cd master &&  whoami  "
+                          sh 'ssh ec2-user@65.0.130.141 cd master &&  whoami '
                           
-                          sh "ssh ec2-user@172.31.32.170 cd master && ls -la" 
+                          sh "ssh ec2-user@65.0.130.141 cd master && ls -la" 
                           }  
              
           
