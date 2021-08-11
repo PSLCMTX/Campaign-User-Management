@@ -2,7 +2,7 @@ version: "3"
 services:
   usermanagement:
           build: .
-          image: user-manager
+          image: user-manager:tagVersion
           ports:
             - "8085:8085"
           container_name: usermng-api
