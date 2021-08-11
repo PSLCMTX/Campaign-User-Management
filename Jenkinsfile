@@ -19,6 +19,17 @@ pipeline {
            }
        }
       
+      stage('Build & Push Docker Image'){
+            steps{
+                sh "docker build . -t ${IMAGE_URL_WITH_TAG}"
+                sh "docker push ${IMAGE_URL_WITH_TAG}"
+            }
+        }
+      stage('Deployment on Dockerhost'){
+      steps{
+                sh "chmod +x versionChange.sh"
+                sh "./versionChange.sh ${DOCKER_TAG}"
+           }
   } 
 }
 def getDockerTag(){
