@@ -5,6 +5,7 @@ pipeline {
          DOCKER_TAG = getDockerTag()
          DOCKER_PRV_TAG = getPrevDockerTag()
          IMAGE_URL_WITH_TAG = "bec0413/cmp_usr_mng:${DOCKER_TAG}"
+         IMAGE_PRV_WITH_TAG = "bec0413/cmp_usr_mng:${DOCKER_PRV_TAG}"
     }
    tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -51,7 +52,7 @@ pipeline {
                           
                               sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose down '
                      
-                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker rmi $(docker images bec0413/cmp_usr_mng -aq) '
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker rmi $(docker images ${IMAGE_PRV_WITH_TAG} -aq) '
                     
                               sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/'
                     
