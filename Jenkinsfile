@@ -40,16 +40,22 @@ pipeline {
                
                 sshagent(['docker-machine']) {
                        
-                          sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/'
+                              sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/'
                                    
-                          sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  whoami '
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  whoami '
                     
-                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls -la '
-                    
-                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  pwd '
-                          sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose ps -a '
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls -la '
+
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  pwd '
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose ps -a '
                           
-                          sh "ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141 cd master && ls -la" 
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose down '
+                     
+                              sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker rmi $(docker images bec0413/cmp_usr_mng -aq) '
+                    
+                               sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose up --detach '
+                    
+                              sh "ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose ps -a " 
                           }  
              
           
