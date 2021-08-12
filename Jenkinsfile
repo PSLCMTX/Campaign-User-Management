@@ -32,11 +32,12 @@ pipeline {
             }
         }
       stage('Deployment on Dockerhost'){
-      steps{
+            def dockerRun = 'ls && docker ps && ls -la && whoami && docker-compose ps -a'
+       steps{
                 sh "chmod +x versionChange.sh"
                 sh "./versionChange.sh ${DOCKER_TAG}"
                 sh "cat docker-compose.yaml"
-                 def dockerRun = 'ls && docker ps && ls -la && whoami && docker-compose ps -a'
+               
                 sshagent(['docker-machine']) {
                        
                           sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/'
