@@ -44,9 +44,12 @@ pipeline {
                                    
                           sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  whoami '
                     
-                          sh 'ssh ec2-user@65.0.130.141  docker-compose ps -a '
+                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls -la '
+                    
+                     sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  pwd '
+                          sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  docker-compose ps -a '
                           
-                          sh "ssh ec2-user@65.0.130.141 cd master && ls -la" 
+                          sh "ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141 cd master && ls -la" 
                           }  
              
           
