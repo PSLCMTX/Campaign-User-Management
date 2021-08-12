@@ -39,7 +39,7 @@ pipeline {
        
                 sshagent(['docker-machine']) {
                        
-                          sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/master'
+                          sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml jenkins@65.0.130.141:/home/jenkins/'
                                    
                           sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls && docker-compose ps'
                     
