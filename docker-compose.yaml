@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 services:
   usermanagement:
           image: bec0413/cmp_usr_mng:tagVersion
@@ -23,5 +23,6 @@ services:
              - shared-net
 networks:
    shared-net:
+      name: my-network
       driver: bridge   
           
