@@ -41,7 +41,7 @@ pipeline {
                        
                           sh 'scp -o StrictHostKeyChecking=no test2.txt docker-compose.yaml ec2-user@65.0.130.141:/home/ec2-user/'
                                    
-                          sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls && docker ps && whoami && pwd && sudo su && docker-compose ps -a'
+                          sh 'ssh -o StrictHostKeyChecking=no ec2-user@65.0.130.141  ls && docker ps && ls -la && whoami && docker-compose ps -a'
                     
                           sh 'ssh ec2-user@65.0.130.141 cd master &&  whoami '
                           
