@@ -3,5 +3,5 @@
     become: true
     tasks:
     - name: create docker container
-      shell: docker run -d --name adil_con -p 8085:8085 bec0413/cmp_usr_mng:c986e20
+      shell: docker run -d --name adil_con -p 8085:8085 ansible_demo
 
