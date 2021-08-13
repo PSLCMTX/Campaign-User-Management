@@ -1,9 +1,10 @@
 - hosts: test
+  become: True
   tasks:
     - name:  copy docker-compose.yaml to docker volumes
       copy:
-          src: docker-compose.yaml
-          dest: /home/ec2-user/master/
+          src: container.yaml
+          dest: /home/ec2-user/
     - name: print docker-compose.yaml
       ansible.builtin.shell:
         cmd: ls -la
