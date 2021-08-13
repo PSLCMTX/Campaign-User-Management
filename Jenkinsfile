@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-         NORMAL_TAG = "CIMETRICTRDDDDR"
+         NORMAL_TAG = "CIMETRICTRDDRTRDDR"
          DOCKER_TAG = getDockerTag()
          DOCKER_PRV_TAG = getPrevDockerTag()
          IMAGE_URL_WITH_TAG = "bec0413/cmp_usr_mng:${DOCKER_TAG}"
