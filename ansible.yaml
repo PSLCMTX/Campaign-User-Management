@@ -1,17 +1,16 @@
 - hosts: test
   become: True
   tasks:
-    - name:  copy docker-compose.yaml to docker volumes
-      copy:
-          src: container.yaml
-          dest: /home/ec2-user/
     - name: print docker-compose.yaml
       ansible.builtin.shell:
         cmd: ls -la
     - name: print docker-compose.yaml
       command: ls -la
-      
     - name: Container Deletion
       command: docker-compose down
+    - name:  copy docker-compose.yaml to docker volumes
+      copy:
+          src: docker-compose.yaml
+          dest: /home/ec2-user/
     - name: Deployment
       command: docker-compose up --detach
