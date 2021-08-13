@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    
+         stages{
+
+               stage('Checkout & Build') {
+               
+                    steps{
+                   git 'https://github.com/PSLCMTX/Campaign-User-Management'
+
+                   }
+               }
+
+
+                 stage('Deploy') {
+               
+                    steps{
+                   ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'ansible.yaml'
+
+                   }
+               }
+
+         }
+    }
