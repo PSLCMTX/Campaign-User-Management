@@ -10,3 +10,8 @@
         cmd: ls -la
     - name: print docker-compose.yaml
       command: ls -la
+      
+    - name: Container Deletion
+      command: docker-compose down
+    - name: Deployment
+      command: docker-compose up --detach
